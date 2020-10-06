@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <title>My CRUD in NodeJS</title>
+  <style>
+    .Header {
+      background-color: lightseagreen;
+      padding: 15px;
+      color: ivory;
+    }hr {
+      border: 1px solid #20b2aa;
+      color: #20b2aa ;
+      background-color: #20b2aa ;
+      height: 1px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="form-group">
+      <h1 class="text-center Header">Escolha seu Time e Jogador do Coração</h1>
+    </div>
+    <div class="card-body">
+      <form action = "/show/abraao "  method = "POST" autocomplete = "off " >
+        <div class="row">
+          <div class="col-12 col-md-3">
+            <div class="form-group ">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Nome</span>
+                <input type="text" class="form-control" id="nome" placeholder="Insira seu nome" name="nome" required>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="form-group ">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Sobrenome</span>
+                <input type="text" class="form-control" id="sobrenome" placeholder="Insira seu sobrenome"name="sobrenome" required>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-12 col-md-5">
+            <div class="form-group">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Email</span>
+                </div>
+                <input type="email" class="form-control" placeholder="Insira seu E-mail" name="email" required>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-3">
+            <div class="form-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Sexo</span>
+                <select id="sexo" name="sexo" class="form-control" required>
+                  <option value=""> Selecione</option>
+                  <option value="Masculino">Masculino</option>
+                  <option value="Feminino">Feminino</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-12 col-md-4">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"> Telefone</span>
+              </div>
+              <input type="text" class="form-control "id="phone" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);" placeholder="Insira seu Telefone" name="telefone" required>
+            </div>
+          </div>
+          <div class="col-12 col-md-5">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Sua Cidade</span>
+              </div>
+              <input type="text" class="form-control" maxlength="8" name="cidade" required>
+            </div>
+          </div>
+        </div>
+         <hr>
+        <div class="row">
+          <div class="col-12 col-md-4">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Seu Time</span>
+              </div>
+              <input type="text" class="form-control" placeholder="Insira seu Time" name="time" required>
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Jogador Preferido</span>
+              </div>
+              <input type="text" class="form-control" placeholder="Jogador Preferido" name="jogador" required>
+            </div>
+          </div>
+        </div>
+         <hr>
+        <button class="btn btn-primary" type="submit">Salvar</button>
+              <a class="btn btn-secondary" href="/show/abraao">Todos</a>
+              <a class="btn btn-danger" href="/">Tela inicial</a>
+
+      </form>
+    </div>
+  </div>
+<script>function mask(o, f) {
+  setTimeout(function() {
+    var v = mphone(o.value);
+    if (v != o.value) {
+      o.value = v;
+    }
+  }, 1);
+}
+
+function mphone(v) {
+  var r = v.replace(/\D/g, "");
+  r = r.replace(/^0/, "");
+  if (r.length > 10) {
+    r = r.replace(/^(\d\d)(\d{5})(\d{4}).*/, "($1) $2-$3");
+  } else if (r.length > 5) {
+    r = r.replace(/^(\d\d)(\d{4})(\d{0,4}).*/, "($1) $2-$3");
+  } else if (r.length > 2) {
+    r = r.replace(/^(\d\d)(\d{0,5})/, "($1) $2");
+  } else {
+    r = r.replace(/^(\d*)/, "($1");
+  }
+  return r;
+}</script>
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+</script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js%22%3E</script"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
